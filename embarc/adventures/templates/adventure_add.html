@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Embarc :: Add adventure{% endblock %}
+{% block content %}
+        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
+        <h2>Add adventure</h2>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{form}}
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+{% endblock %}

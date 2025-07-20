@@ -1,0 +1,45 @@
+body {
+    font-family: sans-serif;
+    font-size: small;
+    color: cornflowerblue;
+    background-color: floralwhite;
+}
+
+table {
+    border-collapse: collapse;
+    display: inline-table;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+td.numeric {
+    text-align: right;
+}
+
+a.item {
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+a.item:hover {
+    text-decoration: underline;
+}
+
+a.item:visited {
+    color: cornflowerblue;
+}
+
+a.icon {
+    text-decoration: none;
+}
+
+a:hover.icon {
+    text-decoration: none;
+}
+
+b.done {
+    color: lightseagreen;
+}

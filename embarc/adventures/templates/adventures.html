@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Embarc :: Adventures{% endblock %}
+{% block content %}
+        <h1><a class="icon" href="{% url 'index' %}">🔙</a></h1>
+        <h2>Adventures <a class="icon" href="{% url 'adventure_add' %}" title="Add">➕</a></a></h2>
+        {% for adventure in adventures %}
+        <table>
+                <tr>
+                        <th>
+                                <a class="item" href="{% url 'adventure_edit' id=adventure.id %}">
+                                        <b>{{adventure.name}}</b> ({{adventure.description}})
+                                ️</a>
+                                <a
+                                        class="icon"
+                                        href="{% url 'adventure_delete' id=adventure.id %}"
+                                        onclick="return confirm('Are you sure?')"
+                                        title="Delete"
+                                >
+                                        ❌
+                                </a>
+                                <a
+                                        class="icon"
+                                        href="{% url 'mission_add' adventure_id=adventure.id %}"
+                                        title="Add mission"
+                                >
+                                        ➕️
+                                </a>
+                        </th>
+                </tr>
+                {% for mission in adventure.mission_set.all %}
+                <tr>
+                        {% if not mission.parent %}
+                        <td>
+                                <a class="item" href="{% url 'mission_edit' id=mission.id %}">
+                                {% if mission.completed %}
+                                        <b class="done">{{mission.name}}</b>
+                                {% else %}
+                                        {{mission.name}}
+                                {% endif %}
+                                </a>
+                                <a
+                                        class="icon"
+                                        href="{% url 'mission_delete' id=mission.id %}"
+                                        onclick="return confirm('Are you sure?')"
+                                        title="Delete"
+                                >
+                                        ❌
+                                </a>
+                                <a
+                                        class="icon"
+                                        href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
+                                        title="Add mission"
+                                >
+                                        ➕️
+                                </a>
+                                {% if mission.children.count > 0 %}
+                                <ul>
+                                        {% for submission in mission.children.all %}
+                                        <li>
+                                                <a class="item" href="{% url 'mission_edit' id=submission.id %}">
+                                                {% if submission.completed %}
+                                                        <b class="done">{{submission.name}}</b>
+                                                {% else %}
+                                                        {{submission.name}}
+                                                {% endif %}
+                                                </a>
+                                                <a
+                                                        class="icon"
+                                                        href="{% url 'mission_delete' id=submission.id %}"
+                                                        onclick="return confirm('Are you sure?')"
+                                                        title="Delete"
+                                                >
+                                                        ❌
+                                                </a>
+                                        </li>
+                                        {% endfor %}
+                                </ul>
+                                {% endif %}
+                        </td>
+                        {% endif %}
+                </tr>
+                {% endfor %}
+        </table>
+        {% endfor %}
+{% endblock %}
