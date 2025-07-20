@@ -12,6 +12,7 @@ def adventure_index(request):
         }
     )
 
+
 def adventure_add(request):
     if request.method == 'POST':
         form = AdventureForm(request.POST)
@@ -22,6 +23,7 @@ def adventure_add(request):
         form = AdventureForm()
 
     return render(request, 'adventure_add.html', {'form': form})
+
 
 def adventure_edit(request, id):
     adventure = get_object_or_404(Adventure, pk=id)
@@ -36,11 +38,13 @@ def adventure_edit(request, id):
 
     return render(request, 'adventure_edit.html', {'form': form})
 
+
 def adventure_delete(request, id):
     adventure = get_object_or_404(Adventure, pk=id)
     adventure.delete()
 
     return redirect(adventure_index)
+
 
 def mission_add(request, adventure_id):
     if request.method == 'POST':
@@ -59,6 +63,7 @@ def mission_add(request, adventure_id):
             'adventure_id': adventure_id
         }
     )
+
 
 def mission_edit(request, id):
     mission = get_object_or_404(Mission, pk=id)
@@ -79,6 +84,7 @@ def mission_delete(request, id):
     mission.delete()
 
     return redirect(adventure_index)
+
 
 def submission_add(request, parent_id, adventure_id):
     if request.method == 'POST':

@@ -26,9 +26,13 @@
                                 >
                                         ➕️
                                 </a>
+                                <div>
+                                        <span>{{adventure.percentage}}%</span>
+                                        <progress value="{{adventure.percentage}}" max="100"></progress>
+                                </div>
                         </th>
                 </tr>
-                {% for mission in adventure.mission_set.all %}
+                {% for mission in adventure.missions.all %}
                 <tr>
                         {% if not mission.parent %}
                         <td>
