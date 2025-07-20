@@ -7,7 +7,7 @@ def index(request):
         request,
         'index.html',
         {
-            'adventure_count' : Adventure.objects.count(),
-            'mission_count' : Mission.objects.count()
+            'adventure_count': Adventure.objects.count(),
+            'mission_count': Mission.objects.count()
         }
     )
