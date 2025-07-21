@@ -2,8 +2,11 @@ from django.db import models
 
 
 class Adventure(models.Model):
+    class Meta:
+        ordering = ['name']
+
     name = models.CharField(max_length=64)
-    description = models.CharField(max_length=64, null=True, blank=True)
+    description = models.CharField(max_length=512, null=True, blank=True)
 
     objects = models.Manager()
 
@@ -17,12 +20,12 @@ class Adventure(models.Model):
         return round(percentage)
 
     def __str__(self):
-        return f'{self.name} ({self.description})'
+        return f'{self.name} ({self.description[:24]}...)'
 
 
 class Mission(models.Model):
     name = models.CharField(max_length=96)
-    notes = models.CharField(max_length=64, null=True, blank=True)
+    notes = models.CharField(max_length=512, null=True, blank=True)
     completed = models.BooleanField(default=False)
     adventure = models.ForeignKey(Adventure, on_delete=models.CASCADE, related_name='missions')
     parent = models.ForeignKey(
