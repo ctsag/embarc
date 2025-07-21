@@ -1,0 +1,70 @@
+a.item {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+a.item:hover {
+    text-decoration: underline;
+}
+
+a.item:visited {
+    color: cornflowerblue;
+}
+
+a.icon {
+    text-decoration: none;
+}
+
+a:hover.icon {
+    text-decoration: none;
+}
+
+b.done {
+    color: lightseagreen;
+}
+
+body {
+    background-color: floralwhite;
+    color: cornflowerblue;
+    font-family: monospace;
+}
+
+table {
+    background-color: blanchedalmond;
+    border-collapse: collapse;
+    border-style: dashed;
+    display: inline-table;
+    margin: 10px;
+    width: 23%;
+}
+
+table.missions {
+    width: 50%;
+}
+
+td.description {
+    border: 1px dashed black;
+    font-size: medium;
+    height: 170px;
+    padding: 20px;
+    vertical-align: top;
+}
+
+td.missions {
+    border: 1px dashed black;
+    padding: 10px 20px;
+    vertical-align: middle;
+}
+
+td.footer {
+    text-align: center;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+th {
+    border: 1px dashed black;
+    font-size: large;
+    height: 30px;
+    padding: 20px;
+}

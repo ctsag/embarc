@@ -8,10 +8,6 @@ urlpatterns = [
     ),
     path(
         '',
-        include('website.urls')
-    ),
-    path(
-        'adventures/',
         include('adventures.urls')
     )
 ]

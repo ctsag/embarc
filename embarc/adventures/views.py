@@ -13,6 +13,18 @@ def adventure_index(request):
     )
 
 
+def adventure_view(request, id):
+    adventure = get_object_or_404(Adventure, pk=id)
+
+    return render(
+        request,
+        'adventure_view.html',
+        {
+            'adventure': adventure
+        }
+    )
+
+
 def adventure_add(request):
     if request.method == 'POST':
         form = AdventureForm(request.POST)
@@ -72,7 +84,7 @@ def mission_edit(request, id):
         form = MissionForm(request.POST, instance=mission)
         if form.is_valid():
             form.save()
-            return redirect('adventures')
+            return redirect('adventure_view', id=mission.adventure.id)
     else:
         form = MissionForm(instance=mission)
 
@@ -83,7 +95,7 @@ def mission_delete(request, id):
     mission = get_object_or_404(Mission, pk=id)
     mission.delete()
 
-    return redirect(adventure_index)
+    return redirect('adventure_view', id=mission.adventure.id)
 
 
 def submission_add(request, parent_id, adventure_id):
