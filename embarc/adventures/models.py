@@ -15,7 +15,7 @@ class Adventure(models.Model):
         percentage = 0
 
         if total_mission_count > 0:
-            percentage = self.missions.filter(completed=True).count() / total_mission_count * 100
+            percentage = self.missions.exclude(completed='N').count() / total_mission_count * 100
 
         return round(percentage)
 
@@ -24,9 +24,14 @@ class Adventure(models.Model):
 
 
 class Mission(models.Model):
+    class Completed(models.TextChoices):
+        NO = 'N', 'No'
+        YES = 'Y', 'Yes'
+        IMPOSSIBLE = 'I', 'Impossible'
+
     name = models.CharField(max_length=96)
     notes = models.CharField(max_length=512, null=True, blank=True)
-    completed = models.BooleanField(default=False)
+    completed = models.CharField(max_length=1, choices=Completed, default=Completed.NO)
     adventure = models.ForeignKey(Adventure, on_delete=models.CASCADE, related_name='missions')
     parent = models.ForeignKey(
         'self',

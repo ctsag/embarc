@@ -23,6 +23,10 @@ b.done {
     color: lightseagreen;
 }
 
+b.impossible {
+    color: salmon;
+}
+
 body {
     background-color: floralwhite;
     color: cornflowerblue;

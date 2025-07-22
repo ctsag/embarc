@@ -19,7 +19,7 @@ class MissionForm(ModelForm):
         widgets = {
             'name': TextInput(attrs={'size': 64, 'autofocus': True}),
             'notes': Textarea(attrs={'size': 512}),
-            'completed': CheckboxInput(),
+            'completed': Select(),
             'adventure': Select(),
             'parent': Select()
         }
