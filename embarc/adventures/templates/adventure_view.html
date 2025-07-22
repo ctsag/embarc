@@ -62,8 +62,10 @@
         {% if not mission.parent %}
                     <td class="missions">
                         <a class="item" href="{% url 'mission_edit' id=mission.id %}">
-            {% if mission.completed %}
+            {% if mission.completed == 'Y' %}
                             <b class="done">{{mission.name}}</b>
+            {% elif mission.completed == 'I' %}
+                            <b class="impossible">{{mission.name}}</b>
             {% else %}
                             {{mission.name}}
             {% endif %}
@@ -88,8 +90,10 @@
                 {% for submission in mission.children.all %}
                             <li>
                                 <a class="item" href="{% url 'mission_edit' id=submission.id %}">
-                    {% if submission.completed %}
+                    {% if submission.completed == 'Y' %}
                                     <b class="done">{{submission.name}}</b>
+                    {% elif submission.completed == 'I' %}
+                                    <b class="impossible">{{submission.name}}</b>
                     {% else %}
                                     {{submission.name}}
                     {% endif %}
