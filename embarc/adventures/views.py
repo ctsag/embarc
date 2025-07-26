@@ -39,16 +39,21 @@ def adventure_add(request):
 
 def adventure_edit(request, id):
     adventure = get_object_or_404(Adventure, pk=id)
+    is_callback = request.GET.get('ref') == 'callback'
 
     if request.method == 'POST':
         form = AdventureForm(request.POST, instance=adventure)
         if form.is_valid():
             form.save()
-            return redirect('adventures')
+            if is_callback:
+                return redirect('adventure_view', id=id)
+            else:
+                return redirect('adventures')
     else:
         form = AdventureForm(instance=adventure)
 
-    return render(request, 'adventure_edit.html', {'form': form})
+    context = {'form': form, 'callback': id} if is_callback else {'form': form}
+    return render(request, 'adventure_edit.html', context)
 
 
 def adventure_delete(request, id):
