@@ -22,7 +22,7 @@
                         <progress value="{{adventure.percentage}}" max="100"></progress>
                         <a
                             class="icon"
-                            href="{% url 'adventure_edit' id=adventure.id %}"
+                            href="{% url 'adventure_edit' id=adventure.id %}?ref=callback"
                             title="Edit"
                         >
                             ✏️

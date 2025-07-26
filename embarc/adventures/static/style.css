@@ -43,6 +43,10 @@ h1, h2 {
     padding: 0px 10px;
 }
 
+input {
+    font-family: monospace;
+}
+
 table {
     background-color: blanchedalmond;
     border-collapse: collapse;
