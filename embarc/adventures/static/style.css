@@ -33,42 +33,70 @@ body {
     font-family: monospace;
 }
 
+button {
+    font-family: monospace;
+    font-size: large;
+    margin: 10px;
+}
+
+h1, h2 {
+    padding: 0px 10px;
+}
+
 table {
     background-color: blanchedalmond;
     border-collapse: collapse;
     border-style: dashed;
-    display: inline-table;
     margin: 10px;
     width: 23%;
+}
+
+table.views {
+    display: inline-table;
 }
 
 table.missions {
     width: 50%;
 }
 
+td {
+    font-size: large;
+    height: 20px;
+    padding: 20px 10px;
+}
+
 td.description {
     border: 1px dashed black;
     font-size: medium;
-    height: 170px;
+    height: 220px;
     padding: 20px;
     vertical-align: top;
 }
 
 td.missions {
     border: 1px dashed black;
+    font-size: medium;
     padding: 10px 20px;
     vertical-align: middle;
 }
 
 td.footer {
-    text-align: center;
     padding: 20px;
+    text-align: center;
     vertical-align: middle;
 }
 
 th {
+    font-size: large;
+    height: 20px;
+    padding: 20px 10px;
+    text-align: right;
+}
+
+th.header {
     border: 1px dashed black;
     font-size: large;
     height: 30px;
     padding: 20px;
+    text-align: center;
 }
