@@ -4,17 +4,17 @@
 {% block content %}
         <h2>Adventures <a class="icon" href="{% url 'adventure_add' %}" title="Add">➕</a></h2>
     {% for adventure in adventures %}
-        <table>
+        <table class="views">
             <thead>
                 <tr>
-                    <th>
+                    <th class="header">
                         <a class="item" href="{% url 'adventure_view' id=adventure.id %}"><b>{{adventure.name}}</b>️</a>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="description">{{adventure.description}}</td>
+                    <td class="description">{{adventure.description|linebreaksbr}}</td>
                 </tr>
             </tbody>
             <tfoot>

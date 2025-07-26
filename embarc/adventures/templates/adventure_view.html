@@ -2,17 +2,17 @@
 {% block title %}Embarc :: View adventure{% endblock %}
 {% block content %}
         <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
-        <table>
+        <table class="views">
             <thead>
                 <tr>
-                    <th>
+                    <th class="header">
                         <b>{{adventure.name}}</b>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="description">{{adventure.description}}</td>
+                    <td class="description">{{adventure.description|linebreaksbr}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -39,10 +39,10 @@
                 </tr>
             </tfoot>
         </table>
-        <table class="missions">
+        <table class="views missions">
             <thead>
                 <tr>
-                    <th>
+                    <th class="header">
                         <b>
                             Missions
                             <a
