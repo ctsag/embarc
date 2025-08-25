@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import get_object_or_404, redirect, render
 from adventures.forms import AdventureForm, MissionForm
 from adventures.models import Adventure, Mission
@@ -101,6 +102,19 @@ def mission_delete(request, id):
     mission.delete()
 
     return redirect('adventure_view', id=mission.adventure.id)
+
+
+def mission_random(request):
+    missions = list(Mission.objects.filter(completed='N'))
+    choices = random.sample(missions, 4)
+
+    return render(
+        request,
+        'mission_random.html',
+        {
+            'missions': choices
+        }
+    )
 
 
 def submission_add(request, parent_id, adventure_id):
