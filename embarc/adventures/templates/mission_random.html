@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Embarc :: Random missions{% endblock %}
+{% block content %}
+        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
+    {% for mission in missions %}
+        <table class="views">
+            <thead>
+                <tr>
+                    <th class="header">
+                        <a
+                                class="item"
+                                href="{% url 'adventure_view' id=mission.adventure.id %}"
+                        >
+                            <b>{{mission.adventure.name}}</b>
+                        ️</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="description">
+                        {{mission.adventure.description|linebreaksbr}}
+                        <hr>
+                        <a class="item" href="{% url 'mission_edit' id=mission.id %}">❗ {{mission.name}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}

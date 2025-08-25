@@ -46,5 +46,10 @@ urlpatterns = [
         'submission/add/<int:parent_id>/<int:adventure_id>',
         views.submission_add,
         name='submission_add'
+    ),
+    path(
+        'mission/random',
+        views.mission_random,
+        name='mission_random'
     )
 ]
