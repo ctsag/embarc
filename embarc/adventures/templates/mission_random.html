@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Embarc :: Random missions{% endblock %}
 {% block content %}
-        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
+        <h1><a class="icon" href="javascript:history.go(-1)">🔙</a></h1>
     {% for mission in missions %}
         <table class="views">
             <thead>
