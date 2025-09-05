@@ -72,6 +72,13 @@
                         </a>
                         <a
                             class="icon"
+                            href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
+                            title="Add mission"
+                        >
+                            ➕️
+                        </a>
+                        <a
+                            class="icon"
                             href="{% url 'mission_delete' id=mission.id %}"
                             onclick="return confirm('Are you sure?')"
                             title="Delete"
@@ -80,10 +87,10 @@
                         </a>
                         <a
                             class="icon"
-                            href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
-                            title="Add mission"
+                            href="{% url 'mission_cycle' id=mission.id %}"
+                            title="Cycle"
                         >
-                            ➕️
+                            ♻️
                         </a>
             {% if mission.children.count > 0 %}
                         <ul class="items">
@@ -105,6 +112,13 @@
                                     title="Delete"
                                 >
                                     ❌
+                                </a>
+                                <a
+                                    class="icon"
+                                    href="{% url 'mission_cycle' id=submission.id %}"
+                                    title="Cycle"
+                                >
+                                    ♻️
                                 </a>
                             </li>
                 {% endfor %}

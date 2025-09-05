@@ -51,5 +51,10 @@ urlpatterns = [
         'mission/random',
         views.mission_random,
         name='mission_random'
+    ),
+    path(
+        'mission/cycle/<int:id>',
+        views.mission_cycle,
+        name='mission_cycle'
     )
 ]

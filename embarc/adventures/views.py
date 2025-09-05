@@ -117,6 +117,19 @@ def mission_random(request):
     )
 
 
+def mission_cycle(request, id):
+    mission = get_object_or_404(Mission, pk=id)
+
+    if mission.completed == Mission.Completed.YES:
+        mission.completed = Mission.Completed.NO
+    else:
+        mission.completed = Mission.Completed.YES
+
+    mission.save()
+
+    return redirect('adventure_view', id=mission.adventure.id)
+
+
 def submission_add(request, parent_id, adventure_id):
     if request.method == 'POST':
         form = MissionForm(request.POST)
