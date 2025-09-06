@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Embarc :: View adventure{% endblock %}
 {% block content %}
-        <h1><a class="icon" href="javascript:history.go(-1)">🔙</a></h1>
+        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
         <table class="views">
             <thead>
                 <tr>
