@@ -94,7 +94,14 @@ def mission_edit(request, id):
     else:
         form = MissionForm(instance=mission)
 
-    return render(request, 'mission_edit.html', {'form': form})
+    return render(
+        request,
+        'mission_edit.html',
+        {
+            'form': form,
+            'adventure_id': mission.adventure.id
+        }
+    )
 
 
 def mission_delete(request, id):
