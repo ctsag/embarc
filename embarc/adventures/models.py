@@ -6,7 +6,7 @@ class Adventure(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=64)
-    description = models.CharField(max_length=512, null=True, blank=True)
+    description = models.CharField(max_length=512)
 
     objects = models.Manager()
 

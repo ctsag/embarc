@@ -4,7 +4,6 @@
 
 # Build and runtime
 __pycache__/
-**/migrations/*.py
 *.sqlite3
 
 # Data

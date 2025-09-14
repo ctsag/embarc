@@ -35,6 +35,9 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app/embarc
 USER appuser
 
+RUN python manage.py makemigrations adventures
+RUN python manage.py migrate
+
 EXPOSE 8001
  
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
