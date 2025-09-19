@@ -113,7 +113,11 @@ def mission_delete(request, id):
 
 def mission_random(request):
     missions = list(Mission.objects.filter(completed='N'))
-    choices = random.sample(missions, 4)
+
+    if missions:
+        choices = random.sample(missions, 4)
+    else:
+        choices = list()
 
     return render(
         request,
