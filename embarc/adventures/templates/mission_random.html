@@ -2,29 +2,33 @@
 {% load static %}
 {% block title %}Embarc :: Random missions{% endblock %}
 {% block content %}
-    {% for mission in missions %}
-        <table class="views">
-            <thead>
-                <tr>
-                    <th class="header">
-                        <a
-                                class="item"
-                                href="{% url 'adventure_view' id=mission.adventure.id %}"
-                        >
-                            <b>{{mission.adventure.name}}</b>
-                        ️</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="description">
-                        {{mission.adventure.description|linebreaksbr}}
-                        <hr>
-                        <a class="item" href="{% url 'mission_edit' id=mission.id %}">❗ {{mission.name}}</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    {% endfor %}
+    {% if missions %}
+        {% for mission in missions %}
+            <table class="views">
+                <thead>
+                    <tr>
+                        <th class="header">
+                            <a
+                                    class="item"
+                                    href="{% url 'adventure_view' id=mission.adventure.id %}"
+                            >
+                                <b>{{mission.adventure.name}}</b>
+                            ️</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="description">
+                            {{mission.adventure.description|linebreaksbr}}
+                            <hr>
+                            <a class="item" href="{% url 'mission_edit' id=mission.id %}">❗ {{mission.name}}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    {% else %}
+            No missions found. Add some first, and revisit.
+    {% endif %}
 {% endblock %}
