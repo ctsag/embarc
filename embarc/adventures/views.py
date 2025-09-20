@@ -115,7 +115,7 @@ def mission_random(request):
     missions = list(Mission.objects.filter(completed='N'))
 
     if missions:
-        choices = random.sample(missions, 4)
+        choices = random.sample(missions, min(4, len(missions)))
     else:
         choices = list()
 
