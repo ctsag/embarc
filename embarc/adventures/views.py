@@ -141,6 +141,19 @@ def mission_cycle(request, id):
     return redirect('adventure_view', id=mission.adventure.id)
 
 
+def mission_reset(request, id):
+    mission = get_object_or_404(Mission, pk=id)
+
+    mission.completed = Mission.Completed.NO
+    mission.save()
+
+    for submission in mission.children.all():
+        submission.completed = Mission.Completed.NO
+        submission.save()
+
+    return redirect('adventure_view', id=mission.adventure.id)
+
+
 def submission_add(request, parent_id, adventure_id):
     if request.method == 'POST':
         form = MissionForm(request.POST)
