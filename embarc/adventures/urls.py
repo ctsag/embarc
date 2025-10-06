@@ -56,5 +56,10 @@ urlpatterns = [
         'mission/cycle/<int:id>',
         views.mission_cycle,
         name='mission_cycle'
+    ),
+    path(
+        'mission/reset/<int:id>',
+        views.mission_reset,
+        name='mission_reset'
     )
 ]

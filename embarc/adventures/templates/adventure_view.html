@@ -92,6 +92,13 @@
                         >
                             ♻️
                         </a>
+                        <a
+                            class="icon"
+                            href="{% url 'mission_reset' id=mission.id %}"
+                            title="Cycle"
+                        >
+                            🏁
+                        </a>
             {% if mission.children.count > 0 %}
                         <ul class="items">
                 {% for submission in mission.children.all %}
