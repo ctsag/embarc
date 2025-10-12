@@ -171,3 +171,16 @@ def submission_add(request, parent_id, adventure_id):
             'adventure_id': adventure_id
         }
     )
+
+def almost_there(request):
+    adventures = list(Adventure.objects.all())
+
+    adventures.sort(key=lambda adventure: adventure.percentage(), reverse=True)
+
+    return render(
+        request,
+        'adventures.html',
+        {
+            'adventures': adventures[:8]
+        }
+    )

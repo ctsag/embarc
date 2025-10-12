@@ -61,5 +61,10 @@ urlpatterns = [
         'mission/reset/<int:id>',
         views.mission_reset,
         name='mission_reset'
+    ),
+    path(
+        'adventures/almost_there',
+        views.almost_there,
+        name='almost_there'
     )
 ]
