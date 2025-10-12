@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="{% static 'style.css' %}"/>
     </head>
     <body>
+        <div class="topbar">
+            <a class="icon" href="/">HOME</a>
+            <span>|</span>
+            <a class="icon" href="{% url 'adventure_add' %}">PLAN</a></span>
+            <span>|</span>
+            <a class="icon" href="{% url 'mission_random' %}">RANDOM</a></span>
+        </div>
         {% block content %}{% endblock %}
     </body>
 </html>

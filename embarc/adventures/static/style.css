@@ -39,6 +39,23 @@ button {
     margin: 10px;
 }
 
+div.topbar {
+    align-items: center;
+    background-color: cornflowerblue;
+    display: flex;
+    gap: 5px;
+    height: 35px;
+    justify-content: center;
+    width: 100%;
+}
+
+div.topbar * {
+    color: floralwhite;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 h1, h2 {
     padding: 0px 10px;
 }
