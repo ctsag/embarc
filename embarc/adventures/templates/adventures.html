@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Embarc :: Adventures{% endblock %}
 {% block content %}
-        <h2>Adventures <a class="icon" href="{% url 'adventure_add' %}" title="Add">➕</a></h2>
     {% for adventure in adventures %}
         <table class="views">
             <thead>
@@ -42,5 +41,4 @@
             </tfoot>
         </table>
     {% endfor %}
-        <a class="item" href="{% url 'mission_random' %}"><h2>Random Mission</h2></a>
 {% endblock %}
