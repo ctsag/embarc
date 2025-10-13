@@ -7,6 +7,7 @@ class Adventure(models.Model):
 
     name = models.CharField(max_length=64)
     description = models.CharField(max_length=512)
+    last_modified = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()
 
