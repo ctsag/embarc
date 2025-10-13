@@ -46,7 +46,10 @@ div.topbar {
     gap: 5px;
     height: 35px;
     justify-content: center;
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 div.topbar * {
