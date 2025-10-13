@@ -66,5 +66,10 @@ urlpatterns = [
         'adventures/almost_there',
         views.almost_there,
         name='almost_there'
+    ),
+    path(
+        'adventures/last_modified',
+        views.last_modified,
+        name='last_modified'
     )
 ]
