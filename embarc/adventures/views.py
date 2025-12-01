@@ -137,11 +137,11 @@ def mission_cycle(request, id):
     mission = get_object_or_404(Mission, pk=id)
 
     if mission.completed == Mission.Completed.YES:
-        mission.completed = Mission.Completed.NO
-    elif mission.completed == Mission.Completed.NO:
         mission.completed = Mission.Completed.IMPOSSIBLE
-    else:
+    elif mission.completed == Mission.Completed.NO:
         mission.completed = Mission.Completed.YES
+    else:
+        mission.completed = Mission.Completed.NO
 
     mission.save()
     mission.adventure.save()
