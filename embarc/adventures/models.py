@@ -12,11 +12,12 @@ class Adventure(models.Model):
     objects = models.Manager()
 
     def percentage(self):
-        total_mission_count = self.missions.exclude(completed='I').count()
+        total_mission_count = self.missions.exclude(completed=Mission.Completed.IMPOSSIBLE).count()
+        completed_mission_count = self.missions.filter(completed=Mission.Completed.YES).count()
         percentage = 0
 
         if total_mission_count > 0:
-            percentage = self.missions.filter(completed='Y').count() / total_mission_count  * 100
+            percentage = completed_mission_count / total_mission_count  * 100
 
         return round(percentage)
 

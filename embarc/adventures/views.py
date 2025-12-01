@@ -138,6 +138,8 @@ def mission_cycle(request, id):
 
     if mission.completed == Mission.Completed.YES:
         mission.completed = Mission.Completed.NO
+    elif mission.completed == Mission.Completed.NO:
+        mission.completed = Mission.Completed.IMPOSSIBLE
     else:
         mission.completed = Mission.Completed.YES
 
