@@ -35,6 +35,8 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app/embarc
 USER appuser
 
+RUN mkdir db
+RUN touch db/db.sqlite3
 RUN python manage.py makemigrations adventures
 RUN python manage.py migrate
 
