@@ -2,43 +2,47 @@
 {% load static %}
 {% block title %}Embarc :: Adventures{% endblock %}
 {% block content %}
-    {% for adventure in adventures %}
-        <table class="views">
-            <thead>
-                <tr>
-                    <th class="header">
-                        <a class="item" href="{% url 'adventure_view' id=adventure.id %}"><b>{{adventure.name}}</b>️</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="description">{{adventure.description|linebreaksbr}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="footer">
-                        {{adventure.percentage}}%
-                        <progress value="{{adventure.percentage}}" max="100"></progress>
-                        <a
-                            class="icon"
-                            href="{% url 'adventure_edit' id=adventure.id %}"
-                            title="Edit"
-                        >
-                            ✏️
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'adventure_delete' id=adventure.id %}"
-                            onclick="return confirm('Are you sure?')"
-                            title="Delete"
-                        >
-                            ❌
-                        </a>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    {% endfor %}
+    {% if adventures %}
+        {% for adventure in adventures %}
+            <table class="views">
+                <thead>
+                    <tr>
+                        <th class="header">
+                            <a class="item" href="{% url 'adventure_view' id=adventure.id %}"><b>{{adventure.name}}</b>️</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="description">{{adventure.description|linebreaksbr}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="footer">
+                            {{adventure.percentage}}%
+                            <progress value="{{adventure.percentage}}" max="100"></progress>
+                            <a
+                                class="icon"
+                                href="{% url 'adventure_edit' id=adventure.id %}"
+                                title="Edit"
+                            >
+                                ✏️
+                            </a>
+                            <a
+                                class="icon"
+                                href="{% url 'adventure_delete' id=adventure.id %}"
+                                onclick="return confirm('Are you sure?')"
+                                title="Delete"
+                            >
+                                ❌
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        {% endfor %}
+    {% else %}
+        No adventures found. Add some first, and revisit.
+    {% endif %}
 {% endblock %}
