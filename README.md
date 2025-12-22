@@ -12,6 +12,6 @@ docker build -t embarc .
 ```
 Run the container
 ```commandline
-docker run --name embarc -d -p 8001:8001 -v embarc-db:/app/embarc/db embarc
+docker run --restart unless-stopped --name embarc -d -p 8001:8001 -v embarc-db:/app/embarc/db embarc
 ```
 Use the application at http://localhost:8001
