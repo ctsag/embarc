@@ -1,4 +1,4 @@
-from django.forms import CheckboxInput, ModelForm, Select, TextInput, Textarea
+from django.forms import CheckboxInput, ModelForm, Select, TextInput, Textarea, HiddenInput
 from adventures.models import Adventure, Mission
 
 
@@ -20,6 +20,6 @@ class MissionForm(ModelForm):
             'name': TextInput(attrs={'size': 64, 'autofocus': True}),
             'notes': Textarea(attrs={'size': 512}),
             'completed': Select(),
-            'adventure': Select(),
-            'parent': Select()
+            'adventure': HiddenInput,
+            'parent': HiddenInput
         }
