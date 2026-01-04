@@ -114,6 +114,13 @@
                                 </a>
                                 <a
                                     class="icon"
+                                    href="{% url 'submission_add' parent_id=submission.id adventure_id=adventure.id %}"
+                                    title="Add mission"
+                                >
+                                    ➕️
+                                </a>
+                                <a
+                                    class="icon"
                                     href="{% url 'mission_delete' id=submission.id %}"
                                     onclick="return confirm('Are you sure?')"
                                     title="Delete"
@@ -127,6 +134,38 @@
                                 >
                                     ♻️
                                 </a>
+                    {% if submission.children.count > 0 %}
+                                <ol class="items">
+                        {% for task in submission.children.all %}
+                                    <li>
+                                        <a class="item" href="{% url 'mission_edit' id=task.id %}">
+                            {% if task.completed == 'Y' %}
+                                            <b class="done">{{task.name}}</b>
+                            {% elif task.completed == 'I' %}
+                                            <b class="impossible">{{task.name}}</b>
+                            {% else %}
+                                            {{task.name}}
+                            {% endif %}
+                                        </a>
+                                        <a
+                                            class="icon"
+                                            href="{% url 'mission_delete' id=task.id %}"
+                                            onclick="return confirm('Are you sure?')"
+                                            title="Delete"
+                                        >
+                                            ❌
+                                        </a>
+                                        <a
+                                            class="icon"
+                                            href="{% url 'mission_cycle' id=task.id %}"
+                                            title="Cycle"
+                                        >
+                                            ♻️
+                                        </a>
+                                    </li>
+                        {% endfor %}
+                                </ol>
+                    {% endif %}
                             </li>
                 {% endfor %}
                         </ul>
