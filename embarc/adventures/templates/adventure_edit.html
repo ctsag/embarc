@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Embarc :: Edit adventure{% endblock %}
 {% block content %}
-    {% if callback %}
-        <h1><a class="icon" href="{% url 'adventure_view' id=callback %}">🔙</a></h1>
-    {% else %}
-        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
-    {% endif %}
         <h2>Edit adventure</h2>
         <form method="post">
             {% csrf_token %}
