@@ -30,8 +30,8 @@ def adventure_add(request):
     if request.method == 'POST':
         form = AdventureForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('adventures')
+            adventure = form.save()
+            return redirect(adventure_view, adventure.id)
     else:
         form = AdventureForm()
 
@@ -40,28 +40,28 @@ def adventure_add(request):
 
 def adventure_edit(request, id):
     adventure = get_object_or_404(Adventure, pk=id)
-    is_callback = request.GET.get('ref') == 'callback'
 
     if request.method == 'POST':
         form = AdventureForm(request.POST, instance=adventure)
         if form.is_valid():
             form.save()
-            if is_callback:
-                return redirect('adventure_view', id=id)
-            else:
-                return redirect('adventures')
+            return redirect(adventure_view, id)
     else:
         form = AdventureForm(instance=adventure)
 
-    context = {'form': form, 'callback': id} if is_callback else {'form': form}
-    return render(request, 'adventure_edit.html', context)
+    return render(request, 'adventure_edit.html', {'form': form})
 
 
 def adventure_delete(request, id):
     adventure = get_object_or_404(Adventure, pk=id)
     adventure.delete()
 
-    return redirect(adventure_index)
+    referer = request.META.get('HTTP_REFERER')
+
+    if referer.endswith(f'/{id}'):
+        return redirect(adventure_index)
+    else:
+        return redirect(referer)
 
 
 def mission_add(request, adventure_id):
@@ -113,7 +113,7 @@ def mission_delete(request, id):
     mission.delete()
     mission.adventure.save()
 
-    return redirect('adventure_view', id=mission.adventure.id)
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def mission_random(request):

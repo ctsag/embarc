@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Embarc :: View adventure{% endblock %}
 {% block content %}
-        <h1><a class="icon" href="{% url 'adventures' %}">🔙</a></h1>
         <table class="views">
             <thead>
                 <tr>
@@ -22,7 +21,7 @@
                         <progress value="{{adventure.percentage}}" max="100"></progress>
                         <a
                             class="icon"
-                            href="{% url 'adventure_edit' id=adventure.id %}?ref=callback"
+                            href="{% url 'adventure_edit' id=adventure.id %}"
                             title="Edit"
                         >
                             ✏️
