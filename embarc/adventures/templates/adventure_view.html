@@ -78,6 +78,13 @@
                         </a>
                         <a
                             class="icon"
+                            href="{% url 'mission_duplicate' id=mission.id %}"
+                            title="Duplicate"
+                        >
+                            📋
+                        </a>
+                        <a
+                            class="icon"
                             href="{% url 'mission_delete' id=mission.id %}"
                             onclick="return confirm('Are you sure?')"
                             title="Delete"

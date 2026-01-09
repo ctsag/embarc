@@ -38,6 +38,11 @@ urlpatterns = [
         name='mission_edit'
     ),
     path(
+        'mission/duplicate/<int:id>',
+        views.mission_duplicate,
+        name='mission_duplicate'
+    ),
+    path(
         'mission/delete/<int:id>',
         views.mission_delete,
         name='mission_delete'
