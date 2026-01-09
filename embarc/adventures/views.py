@@ -108,6 +108,34 @@ def mission_edit(request, id):
     )
 
 
+def mission_duplicate(request, id):
+    source_mission = get_object_or_404(Mission, pk=id)
+
+    target_mission = Mission(
+        name=f'[DUPLICATE] {source_mission.name}',
+        adventure=source_mission.adventure
+    )
+    target_mission.save()
+
+    for source_submission in source_mission.children.all():
+        target_submission = Mission(
+            name=source_submission.name,
+            adventure=source_submission.adventure,
+            parent=target_mission
+        )
+        target_submission.save()
+
+        for source_submission_task in source_submission.children.all():
+            target_task = Mission(
+                name=source_submission_task.name,
+                adventure=source_submission_task.adventure,
+                parent=target_submission
+            )
+            target_task.save()
+
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
 def mission_delete(request, id):
     mission = get_object_or_404(Mission, pk=id)
     mission.delete()
