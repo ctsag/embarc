@@ -67,6 +67,14 @@ input {
     font-family: monospace;
 }
 
+li.random {
+    list-style-type: none;
+}
+
+li.random:before {
+    content: "❗ ";
+}
+
 table {
     background-color: blanchedalmond;
     border-collapse: collapse;
