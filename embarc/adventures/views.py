@@ -133,7 +133,7 @@ def mission_duplicate(request, id):
             )
             target_task.save()
 
-    return redirect(request.META.get('HTTP_REFERER'))
+    return redirect(mission_edit, target_mission.id)
 
 
 def mission_delete(request, id):
