@@ -20,9 +20,33 @@
                 <tbody>
                     <tr>
                         <td class="description">
-                            {{mission.adventure.description|linebreaksbr}}
+                            <b>{{mission.adventure.description|linebreaksbr}}</b>
                             <hr>
+                            <br>
+            {% if mission.parent %}
+                {% if mission.parent.parent %}
+                            {{mission.parent.parent.name}}
+                            <ul>
+                                <li>
+                                    {{mission.parent.name}}
+                                    <ol>
+                                        <li class="random">
+                                            {{mission.parent.parent.name}}
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ul>
+                {% else %}
+                            {{mission.parent.name}}
+                            <ul>
+                                <li class="random">
+                                    <a class="item" href="{% url 'mission_edit' id=mission.id %}">{{mission.name}}</a>
+                                </li>
+                            </ul>
+                {% endif %}
+            {% else %}
                             <a class="item" href="{% url 'mission_edit' id=mission.id %}">❗ {{mission.name}}</a>
+            {% endif %}
                         </td>
                     </tr>
                 </tbody>
