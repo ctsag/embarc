@@ -191,6 +191,60 @@ def mission_reset(request, id):
     return redirect('adventure_view', id=mission.adventure.id)
 
 
+def mission_move_up(request, id):
+    moving_mission = get_object_or_404(Mission, pk=id)
+
+    if moving_mission.parent:
+        missions = Mission.objects.filter(parent=moving_mission.parent)
+    else:
+        missions = Mission.objects.filter(adventure=moving_mission.adventure, parent=None)
+
+    last_mission = missions.first()
+    index = 0
+    for mission in missions:
+        if mission.id == moving_mission.id:
+            mission.position = index if index >= 1 else 1
+            mission.save()
+            if last_mission.id != mission.id:
+                last_mission.position = index + 1
+                last_mission.save()
+        else:
+            mission.position = index + 1
+            mission.save()
+
+        last_mission = mission
+        index += 1
+
+    return redirect('adventure_view', id=moving_mission.adventure.id)
+
+
+def mission_move_down(request, id):
+    moving_mission = get_object_or_404(Mission, pk=id)
+
+    if moving_mission.parent:
+        missions = Mission.objects.filter(parent=moving_mission.parent).reverse()
+    else:
+        missions = Mission.objects.filter(adventure=moving_mission.adventure, parent=None).reverse()
+
+    last_mission = missions.first()
+    index = missions.count()
+    for mission in missions:
+        if mission.id == moving_mission.id:
+            mission.position = index + 1 if index < missions.count() else missions.count()
+            mission.save()
+            if last_mission.id != mission.id:
+                last_mission.position = index
+                last_mission.save()
+        else:
+            mission.position = index
+            mission.save()
+
+        last_mission = mission
+        index -= 1
+
+    return redirect('adventure_view', id=moving_mission.adventure.id)
+
+
 def submission_add(request, parent_id, adventure_id):
     adventure = get_object_or_404(Adventure, pk=adventure_id)
 

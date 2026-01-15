@@ -71,6 +71,20 @@
                         </a>
                         <a
                             class="icon"
+                            href="{% url 'mission_move_up' id=mission.id %}"
+                            title="Move up"
+                        >
+                            🔼
+                        </a>
+                        <a
+                            class="icon"
+                            href="{% url 'mission_move_down' id=mission.id %}"
+                            title="Move down"
+                        >
+                            🔽
+                        </a>
+                        <a
+                            class="icon"
                             href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
                             title="Add mission"
                         >
@@ -117,6 +131,20 @@
                     {% else %}
                                     {{submission.name}}
                     {% endif %}
+                                </a>
+                                <a
+                                    class="icon"
+                                    href="{% url 'mission_move_up' id=submission.id %}"
+                                    title="Move up"
+                                >
+                                    🔼
+                                </a>
+                                <a
+                                    class="icon"
+                                    href="{% url 'mission_move_down' id=submission.id %}"
+                                    title="Move down"
+                                >
+                                    🔽
                                 </a>
                                 <a
                                     class="icon"
