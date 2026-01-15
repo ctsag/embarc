@@ -183,6 +183,20 @@
                                         </a>
                                         <a
                                             class="icon"
+                                            href="{% url 'mission_move_up' id=task.id %}"
+                                            title="Move up"
+                                        >
+                                            🔺
+                                        </a>
+                                        <a
+                                            class="icon"
+                                            href="{% url 'mission_move_down' id=task.id %}"
+                                            title="Move down"
+                                        >
+                                            🔻
+                                        </a>
+                                        <a
+                                            class="icon"
                                             href="{% url 'mission_delete' id=task.id %}"
                                             onclick="return confirm('Are you sure?')"
                                             title="Delete"
