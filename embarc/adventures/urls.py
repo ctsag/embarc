@@ -48,6 +48,16 @@ urlpatterns = [
         name='mission_delete'
     ),
     path(
+        'mission/move_up/<int:id>',
+        views.mission_move_up,
+        name='mission_move_up'
+    ),
+    path(
+        'mission/move_down/<int:id>',
+        views.mission_move_down,
+        name='mission_move_down'
+    ),
+    path(
         'submission/add/<int:parent_id>/<int:adventure_id>',
         views.submission_add,
         name='submission_add'

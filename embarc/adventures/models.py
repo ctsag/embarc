@@ -26,6 +26,9 @@ class Adventure(models.Model):
 
 
 class Mission(models.Model):
+    class Meta:
+        ordering = ['position']
+
     class Completed(models.TextChoices):
         NO = 'N', 'No'
         YES = 'Y', 'Yes'
@@ -34,6 +37,7 @@ class Mission(models.Model):
     name = models.CharField(max_length=96)
     notes = models.CharField(max_length=512, null=True, blank=True)
     completed = models.CharField(max_length=1, choices=Completed, default=Completed.NO)
+    position = models.IntegerField(default=0)
     adventure = models.ForeignKey(Adventure, on_delete=models.CASCADE, related_name='missions')
     parent = models.ForeignKey(
         'self',
