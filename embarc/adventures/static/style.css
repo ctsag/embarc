@@ -107,6 +107,28 @@ li.random:before {
     content: "❗ ";
 }
 
+span.icon-bar {
+    opacity: 0.2;
+}
+
+span.icon-bar:hover {
+    opacity: 1;
+    border: 1px solid white;
+    border-radius: 80px;
+    background-color: antiquewhite;
+    padding: 5px;
+}
+
+span.icon-bar a {
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+span.icon-bar a:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
 table {
     background-color: blanchedalmond;
     border-collapse: collapse;
