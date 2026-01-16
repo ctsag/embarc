@@ -69,56 +69,51 @@
                             {{mission.name}}
             {% endif %}
                         </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_move_up' id=mission.id %}"
-                            title="Move up"
-                        >
-                            🔺
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_move_down' id=mission.id %}"
-                            title="Move down"
-                        >
-                            🔻
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
-                            title="Add mission"
-                        >
-                            ➕️
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_duplicate' id=mission.id %}"
-                            title="Duplicate"
-                        >
-                            📋
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_delete' id=mission.id %}"
-                            onclick="return confirm('Are you sure?')"
-                            title="Delete"
-                        >
-                            ❌
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_cycle' id=mission.id %}"
-                            title="Cycle"
-                        >
-                            ♻️
-                        </a>
-                        <a
-                            class="icon"
-                            href="{% url 'mission_reset' id=mission.id %}"
-                            title="Cycle"
-                        >
-                            🏁
-                        </a>
+                        <span class="icon-bar">
+                            <a
+                                href="{% url 'mission_move_up' id=mission.id %}"
+                                title="Move up"
+                            >
+                                🔺
+                            </a>
+                            <a
+                                href="{% url 'mission_move_down' id=mission.id %}"
+                                title="Move down"
+                            >
+                                🔻
+                            </a>
+                            <a
+                                href="{% url 'submission_add' parent_id=mission.id adventure_id=adventure.id %}"
+                                title="Add mission"
+                            >
+                                ➕️
+                            </a>
+                            <a
+                                href="{% url 'mission_duplicate' id=mission.id %}"
+                                title="Duplicate"
+                            >
+                                📋
+                            </a>
+                            <a
+                                href="{% url 'mission_delete' id=mission.id %}"
+                                onclick="return confirm('Are you sure?')"
+                                title="Delete"
+                            >
+                                ❌
+                            </a>
+                            <a
+                                href="{% url 'mission_cycle' id=mission.id %}"
+                                title="Cycle"
+                            >
+                                ♻️
+                            </a>
+                            <a
+                                href="{% url 'mission_reset' id=mission.id %}"
+                                title="Cycle"
+                            >
+                                🏁
+                            </a>
+                        </span>
             {% if mission.children.count > 0 %}
                         <ul class="items">
                 {% for submission in mission.children.all %}
@@ -132,42 +127,39 @@
                                 <a class="item" href="{% url 'mission_edit' id=submission.id %}">
                                     {{submission.name}}
                                 </a>
-                                <a
-                                    class="icon"
-                                    href="{% url 'mission_move_up' id=submission.id %}"
-                                    title="Move up"
-                                >
-                                    🔺
-                                </a>
-                                <a
-                                    class="icon"
-                                    href="{% url 'mission_move_down' id=submission.id %}"
-                                    title="Move down"
-                                >
-                                    🔻
-                                </a>
-                                <a
-                                    class="icon"
-                                    href="{% url 'submission_add' parent_id=submission.id adventure_id=adventure.id %}"
-                                    title="Add mission"
-                                >
-                                    ➕️
-                                </a>
-                                <a
-                                    class="icon"
-                                    href="{% url 'mission_delete' id=submission.id %}"
-                                    onclick="return confirm('Are you sure?')"
-                                    title="Delete"
-                                >
-                                    ❌
-                                </a>
-                                <a
-                                    class="icon"
-                                    href="{% url 'mission_cycle' id=submission.id %}"
-                                    title="Cycle"
-                                >
-                                    ♻️
-                                </a>
+                                <span class="icon-bar">
+                                    <a
+                                        href="{% url 'mission_move_up' id=submission.id %}"
+                                        title="Move up"
+                                    >
+                                        🔺
+                                    </a>
+                                    <a
+                                        href="{% url 'mission_move_down' id=submission.id %}"
+                                        title="Move down"
+                                    >
+                                        🔻
+                                    </a>
+                                    <a
+                                        href="{% url 'submission_add' parent_id=submission.id adventure_id=adventure.id %}"
+                                        title="Add mission"
+                                    >
+                                        ➕️
+                                    </a>
+                                    <a
+                                        href="{% url 'mission_delete' id=submission.id %}"
+                                        onclick="return confirm('Are you sure?')"
+                                        title="Delete"
+                                    >
+                                        ❌
+                                    </a>
+                                    <a
+                                        href="{% url 'mission_cycle' id=submission.id %}"
+                                        title="Cycle"
+                                    >
+                                        ♻️
+                                    </a>
+                                </span>
                     {% if submission.children.count > 0 %}
                                 <ol class="items">
                         {% for task in submission.children.all %}
@@ -181,35 +173,33 @@
                                         <a class="item" href="{% url 'mission_edit' id=task.id %}">
                                             {{task.name}}
                                         </a>
-                                        <a
-                                            class="icon"
-                                            href="{% url 'mission_move_up' id=task.id %}"
-                                            title="Move up"
-                                        >
-                                            🔺
-                                        </a>
-                                        <a
-                                            class="icon"
-                                            href="{% url 'mission_move_down' id=task.id %}"
-                                            title="Move down"
-                                        >
-                                            🔻
-                                        </a>
-                                        <a
-                                            class="icon"
-                                            href="{% url 'mission_delete' id=task.id %}"
-                                            onclick="return confirm('Are you sure?')"
-                                            title="Delete"
-                                        >
-                                            ❌
-                                        </a>
-                                        <a
-                                            class="icon"
-                                            href="{% url 'mission_cycle' id=task.id %}"
-                                            title="Cycle"
-                                        >
-                                            ♻️
-                                        </a>
+                                        <span class="icon-bar">
+                                            <a
+                                                href="{% url 'mission_move_up' id=task.id %}"
+                                                title="Move up"
+                                            >
+                                                🔺
+                                            </a>
+                                            <a
+                                                href="{% url 'mission_move_down' id=task.id %}"
+                                                title="Move down"
+                                            >
+                                                🔻
+                                            </a>
+                                            <a
+                                                href="{% url 'mission_delete' id=task.id %}"
+                                                onclick="return confirm('Are you sure?')"
+                                                title="Delete"
+                                            >
+                                                ❌
+                                            </a>
+                                            <a
+                                                href="{% url 'mission_cycle' id=task.id %}"
+                                                title="Cycle"
+                                            >
+                                                ♻️
+                                            </a>
+                                        </span>
                                     </li>
                         {% endfor %}
                                 </ol>
