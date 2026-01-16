@@ -70,7 +70,9 @@ def mission_add(request, adventure_id):
     if request.method == 'POST':
         form = MissionForm(request.POST)
         if form.is_valid():
-            form.save()
+            mission = form.save(commit=False)
+            mission.position = mission.next_position()
+            mission.save()
             adventure.save()
             return redirect('mission_add', adventure_id=adventure_id)
     else:
@@ -251,7 +253,9 @@ def submission_add(request, parent_id, adventure_id):
     if request.method == 'POST':
         form = MissionForm(request.POST)
         if form.is_valid():
-            form.save()
+            mission = form.save(commit=False)
+            mission.position = mission.next_position()
+            mission.save()
             adventure.save()
             return redirect('submission_add', parent_id=parent_id, adventure_id=adventure_id)
     else:

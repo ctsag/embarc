@@ -49,5 +49,17 @@ class Mission(models.Model):
 
     objects = models.Manager()
 
+    def next_position(self):
+        if self.parent:
+            filter = Mission.objects.filter(parent=self.parent)
+        else:
+            filter = Mission.objects.filter(adventure=self.adventure)
+
+        if filter:
+            max_position = filter.aggregate(models.Max('position'))['position__max']
+            return max_position + 1
+        else:
+            return 1
+
     def __str__(self):
         return self.name
