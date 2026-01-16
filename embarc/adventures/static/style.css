@@ -19,6 +19,16 @@ a:hover.icon {
     text-decoration: none;
 }
 
+b.done {
+    color: lightseagreen;
+    font-weight: bold;
+}
+
+b.impossible {
+    color: salmon;
+    font-weight: bold;
+}
+
 body {
     background-color: floralwhite;
     color: cornflowerblue;
