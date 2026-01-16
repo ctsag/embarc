@@ -19,14 +19,6 @@ a:hover.icon {
     text-decoration: none;
 }
 
-b.done {
-    color: lightseagreen;
-}
-
-b.impossible {
-    color: salmon;
-}
-
 body {
     background-color: floralwhite;
     color: cornflowerblue;
@@ -65,6 +57,36 @@ h1, h2 {
 
 input {
     font-family: monospace;
+}
+
+li.done, li.done a {
+    color: lightseagreen !important;
+    font-weight: bold;
+}
+
+li.impossible, li.impossible a {
+    color: salmon !important;
+    font-weight: bold;
+}
+
+li.incomplete, li.incomplete a {
+    color: cornflowerblue !important;
+    font-weight: normal;
+}
+
+li.done-task, li.done-task a {
+    color: lightseagreen !important;
+    font-weight: bold;
+}
+
+li.impossible-task, li.impossible-task a {
+    color: salmon !important;
+    font-weight: bold;
+}
+
+li.incomplete-task, li.incomplete-task a {
+    color: cornflowerblue !important;
+    font-weight: normal;
 }
 
 li.random {

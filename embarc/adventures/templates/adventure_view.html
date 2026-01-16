@@ -122,15 +122,15 @@
             {% if mission.children.count > 0 %}
                         <ul class="items">
                 {% for submission in mission.children.all %}
-                            <li>
-                                <a class="item" href="{% url 'mission_edit' id=submission.id %}">
                     {% if submission.completed == 'Y' %}
-                                    <b class="done">{{submission.name}}</b>
+                            <li class="done">
                     {% elif submission.completed == 'I' %}
-                                    <b class="impossible">{{submission.name}}</b>
+                            <li class="impossible">
                     {% else %}
-                                    {{submission.name}}
+                            <li class="incomplete">
                     {% endif %}
+                                <a class="item" href="{% url 'mission_edit' id=submission.id %}">
+                                    {{submission.name}}
                                 </a>
                                 <a
                                     class="icon"
@@ -171,15 +171,15 @@
                     {% if submission.children.count > 0 %}
                                 <ol class="items">
                         {% for task in submission.children.all %}
-                                    <li>
-                                        <a class="item" href="{% url 'mission_edit' id=task.id %}">
                             {% if task.completed == 'Y' %}
-                                            <b class="done">{{task.name}}</b>
+                                    <li class="done-task">
                             {% elif task.completed == 'I' %}
-                                            <b class="impossible">{{task.name}}</b>
+                                    <li class="impossible-task">
                             {% else %}
-                                            {{task.name}}
+                                    <li class="incomplete-task">
                             {% endif %}
+                                        <a class="item" href="{% url 'mission_edit' id=task.id %}">
+                                            {{task.name}}
                                         </a>
                                         <a
                                             class="icon"
