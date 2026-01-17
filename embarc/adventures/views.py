@@ -115,22 +115,25 @@ def mission_duplicate(request, id):
 
     target_mission = Mission(
         name=f'[DUPLICATE] {source_mission.name}',
-        adventure=source_mission.adventure
+        adventure=source_mission.adventure,
+        position=source_mission.next_position()
     )
     target_mission.save()
 
-    for source_submission in source_mission.children.all():
+    for i, source_submission in enumerate(source_mission.children.all()):
         target_submission = Mission(
             name=source_submission.name,
             adventure=source_submission.adventure,
+            position=i + 1,
             parent=target_mission
         )
         target_submission.save()
 
-        for source_submission_task in source_submission.children.all():
+        for j, source_submission_task in enumerate(source_submission.children.all()):
             target_task = Mission(
                 name=source_submission_task.name,
                 adventure=source_submission_task.adventure,
+                position=j + 1,
                 parent=target_submission
             )
             target_task.save()
