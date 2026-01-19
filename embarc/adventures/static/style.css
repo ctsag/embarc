@@ -109,6 +109,10 @@ li.random:before {
 
 span.icon-bar {
     opacity: 0.2;
+    border: 1px;
+    border-radius: 80px;
+    padding: 5px;
+    white-space: nowrap;
 }
 
 span.icon-bar:hover {
