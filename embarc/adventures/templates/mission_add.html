@@ -2,7 +2,7 @@
 {% block title %}Embarc :: Add mission{% endblock %}
 {% block content %}
         <h1><a class="icon" href="{% url 'adventure_view' id=adventure_id %}">🔙</a></h1>
-        <h2>Add mission</h2>
+        <h2>Add mission or task</h2>
         <form method="post">
             {% csrf_token %}
             <table>
